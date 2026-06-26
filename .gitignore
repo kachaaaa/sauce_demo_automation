@@ -1,0 +1,20 @@
+# Виртуальное окружение
+venv/
+.venv/
+ENV/
+
+# Кэш Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Локальные настройки IDE
+.idea/
+.vscode/
+*.swp
+
+# Локальные отчеты Allure
+allure-results/
+allure-report/
