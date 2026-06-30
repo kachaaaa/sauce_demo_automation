@@ -1,10 +1,12 @@
 import allure
 import pytest
 
-@allure.epic("Чекаут заказа")
+@allure.epic("UI Automation Framework")
+@allure.feature("Checkout & Order Placement)
 class TestCheckout:
 
-    @allure.story("Полный успешный сценарий покупки товара")
+    @allure.story("Successful End-to-End Purchase")
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_successful_checkout_information(self, logged_in_inventory_page):
         """Тест проверяет сквозной сценарий заказа от корзины до страницы Finish"""
         inventory_page = logged_in_inventory_page
