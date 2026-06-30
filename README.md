@@ -21,17 +21,19 @@ A scalable and highly maintainable automated UI testing framework built with Pyt
 
 ```text
 sauce_demo_automation/
-│
 ├── pages/
 │   ├── base_page.py             # Parent page object with shared locator actions
 │   ├── login_page.py            # Login page elements and methods
 │   ├── inventory_page.py        # Product catalog page elements and actions
-│   └── cart_page.py             # Cart page elements, badges, and validation actions
+│   ├── cart_page.py             # Cart page elements, badges, and validation actions
+│   ├── checkout_page.py         # Checkout: Your Information step page object     
+│   └── checkout2_page.py        # Checkout: Overview step page object             
 │
 ├── tests/
 │   ├── conftest.py              # Global pytest fixtures and driver configuration
 │   ├── test_login.py            # Authentication test scenarios
-│   └── test_cart.py             # Shopping cart item and badge counter test scenarios
+│   ├── test_cart.py             # Shopping cart item and badge counter test scenarios
+│   └── test_checkout.py         # End-to-end checkout and order placement tests   
 │
 ├── .gitignore                   # Excludes venv, pycache, and local allure logs
 ├── requirements.txt             # Project dependencies and libraries
@@ -46,6 +48,8 @@ Negative test scenarios verifying form validation, error message indicators, and
 🛒 Shopping Cart (tests/test_cart.py)
 Navigation Verification: Validating seamless redirection from the product catalog to the Cart page using the header shopping cart icon.
 Dynamic Item Counter: Testing dynamic badge item calculations via specialized locator structures to handle multi-product additions correctly.
+📦 Checkout & Order Placement (tests/test_checkout.py)
+- End-to-End Purchase Flow: Automated the complete shopping journey from adding a specific product to the cart, navigating through the cart, completing the "Your Information" step with dynamically linked page steps, and verifying the final "Checkout: Complete" order confirmation screen.
 
 💻 Installation & Local Setup
 
