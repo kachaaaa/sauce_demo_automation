@@ -15,17 +15,35 @@ class InventoryPage(BasePage):
     @allure.step("Добавление товара '{product_name}' в корзину")
     def add_product_to_cart_by_name(self, product_name):
         formatted_name = product_name.lower().replace(" ", "-")
+        if "sauce-labs-" not in formatted_name:
+            formatted_name = f"sauce-labs-{formatted_name}"
         locator = (By.CSS_SELECTOR, f'[data-test="add-to-cart-{formatted_name}"]')
-        self.driver.find_element(*locator).click()
+        self.click_element(locator)
 
     @allure.step("Удаление товара '{product_name}' из корзины")
     def remove_product_from_cart_by_name(self, product_name):
-        locator = (By.CSS_SELECTOR, f'[data-test="remove-sauce-labs-{product_name}"]')
-        self.driver.find_element(*locator).click()
+        formatted_name = product_name.lower().replace(" ", "-")
+        if "sauce-labs-" not in formatted_name:
+            formatted_name = f"sauce-labs-{formatted_name}"
+        locator = (By.CSS_SELECTOR, f'[data-test="remove-{formatted_name}"]')
+        self.click_element(locator)
 
     @allure.step("Получение количества товаров в корзине (счётчик)")
     def get_cart_badge_text(self):
-        return self.driver.find_element(*self.CART_BADGE).text
+        from selenium.common.exceptions import TimeoutException
+        
+        try:
+            
+            from selenium.webdriver.support.ui import WebDriverWait
+            from selenium.webdriver.support import expected_conditions as EC
+            
+            element = WebDriverWait(self.driver, 2).until(
+                EC.presence_of_element_located(self.CART_BADGE)
+            )
+            return element.text
+        except TimeoutException:
+            
+            return "0"
 
     @allure.step("Клик по иконке корзины и переход на страницу корзины")
     def click_cart(self):

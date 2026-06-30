@@ -16,10 +16,10 @@ def test_add_product_to_cart(logged_in_inventory_page, product):
     
     assert inventory_page.get_title_text() == "Products"
     
-    # Добавляем товар, который передается из списка параметров
     inventory_page.add_product_to_cart_by_name(product)
     
     assert inventory_page.get_cart_badge_text() == "1"
+
 
 def test_remove_product_from_cart(logged_in_inventory_page):
     """Тест 3: Удаление товара из корзины"""
@@ -28,12 +28,6 @@ def test_remove_product_from_cart(logged_in_inventory_page):
     inventory_page.add_product_to_cart_by_name("backpack")
     assert inventory_page.get_cart_badge_text() == "1"
     
-    # ИСПРАВЛЕНО ТУТ: вызываем новый универсальный метод
     inventory_page.remove_product_from_cart_by_name("backpack")
     
-    from selenium.common.exceptions import NoSuchElementException
-    try:
-        inventory_page.get_cart_badge_text()
-        assert False, "Счетчик корзины все еще отображается!"
-    except NoSuchElementException:
-        pass
+    assert inventory_page.get_cart_badge_text() == "0"
