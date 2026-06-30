@@ -14,7 +14,8 @@ class InventoryPage(BasePage):
 
     @allure.step("Добавление товара '{product_name}' в корзину")
     def add_product_to_cart_by_name(self, product_name):
-        locator = (By.CSS_SELECTOR, f'[data-test="add-to-cart-sauce-labs-{product_name}"]')
+        formatted_name = product_name.lower().replace(" ", "-")
+        locator = (By.CSS_SELECTOR, f'[data-test="add-to-cart-{formatted_name}"]')
         self.driver.find_element(*locator).click()
 
     @allure.step("Удаление товара '{product_name}' из корзины")
