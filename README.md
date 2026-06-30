@@ -37,7 +37,6 @@ sauce_demo_automation/
 │
 ├── .gitignore                   # Excludes venv, pycache, and local allure logs
 ├── requirements.txt             # Project dependencies and libraries
-├── test_sandbox.py              # Sandbox file for quick testing/experiments
 └── README.md                    # Project documentation
 
 🎯 Test Coverage & Scenarios

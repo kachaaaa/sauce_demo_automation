@@ -2,7 +2,7 @@ import allure
 import pytest
 
 @allure.epic("UI Automation Framework")
-@allure.feature("Checkout & Order Placement)
+@allure.feature("Checkout & Order Placement")
 class TestCheckout:
 
     @allure.story("Successful End-to-End Purchase")
